@@ -7,3 +7,8 @@ chardet>=5.1.0
 Pillow
 pre-commit
 web.py
+
+
+arrow>=1.2.3
+openpyxl>=3.1.2
+croniter>=1.4.1

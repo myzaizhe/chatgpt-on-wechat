@@ -1,6 +1,9 @@
 # 使用官方 Python 运行时作为父镜像
 FROM python:3.8-slim
 
+#时区设置为上海时区
+ENV TZ=Asia/Shanghai
+
 # 设置工作目录
 WORKDIR /app
 

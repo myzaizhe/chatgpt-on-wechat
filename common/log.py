@@ -1,5 +1,6 @@
 import logging
 import sys
+import logging.handlers
 
 
 def _reset_logger(log):
@@ -16,14 +17,21 @@ def _reset_logger(log):
             datefmt="%Y-%m-%d %H:%M:%S",
         )
     )
-    file_handle = logging.FileHandler("run.log", encoding="utf-8")
+    file_handle = logging.FileHandler("ru.log", encoding="utf-8")
     file_handle.setFormatter(
         logging.Formatter(
             "[%(levelname)s][%(asctime)s][%(filename)s:%(lineno)d] - %(message)s",
             datefmt="%Y-%m-%d %H:%M:%S",
         )
     )
-    log.addHandler(file_handle)
+    file_handle2 =logging.handlers.TimedRotatingFileHandler("run.log", when='midnight', backupCount=30, encoding='utf-8')
+    file_handle2.setFormatter(
+        logging.Formatter(
+            "[%(levelname)s][%(asctime)s][%(filename)s:%(lineno)d] - %(message)s",
+            datefmt="%Y-%m-%d %H:%M:%S",
+        )
+    )
+    log.addHandler(file_handle2)
     log.addHandler(console_handle)
 
 
